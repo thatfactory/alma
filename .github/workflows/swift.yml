@@ -12,7 +12,7 @@ concurrency:
 
 jobs:
   test:
-    runs-on: macmini
+    runs-on: [self-hosted, macOS]
     steps:
       - uses: actions/checkout@v6
       - name: Run Tests
