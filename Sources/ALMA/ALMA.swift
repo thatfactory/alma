@@ -10,7 +10,7 @@ public struct ALMA {
     /// in the *macOS Console app*.
     ///
     /// In the **macOS Console app**, you can filter ALMA's output by
-    /// `SUBSYSTEM`: `com.backslash-f.ALMA`.
+    /// `SUBSYSTEM`: `com.thatfactory.ALMA`.
     let isLoggingEnabled: Bool
 
     // MARK: - Lifecycle

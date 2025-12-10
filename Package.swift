@@ -1,4 +1,4 @@
-// swift-tools-version:6.0
+// swift-tools-version:6.2
 
 import PackageDescription
 
@@ -17,21 +17,56 @@ let package = Package(
         )
     ],
     dependencies: [
-        .package(url: "https://github.com/backslash-f/applogger", from: "2.0.0"),
-        .package(url: "https://github.com/backslash-f/gcoverseer", from: "2.0.0")
+        .package(
+            url: "https://github.com/thatfactory/applogger",
+            from: "0.1.0"
+        ),
+        .package(
+            url: "https://github.com/thatfactory/cgkstatemachine",
+            from: "0.1.0"
+        ),
+        .package(
+            url: "https://github.com/thatfactory/cskscene",
+            from: "0.1.0"
+        ),
+        .package(
+            url: "https://github.com/thatfactory/device",
+            from: "0.1.0"
+        ),
+        .package(
+            url: "https://github.com/thatfactory/gcoverseer",
+            from: "0.1.0"
+        )
     ],
     targets: [
         .target(
             name: "ALMA",
             dependencies: [
-                .product(name: "AppLogger", package: "applogger"),
-                .product(name: "GCOverseer", package: "gcoverseer")
+                .product(
+                    name: "AppLogger",
+                    package: "applogger"
+                ),
+                .product(
+                    name: "CGKStateMachine",
+                    package: "cgkstatemachine"
+                ),
+                .product(
+                    name: "CSKScene",
+                    package: "cskscene"
+                ),
+                .product(
+                    name: "Device",
+                    package: "device"
+                ),
+                .product(
+                    name: "GCOverseer",
+                    package: "gcoverseer"
+                )
             ]
         ),
         .testTarget(
             name: "ALMATests",
             dependencies: ["ALMA"]
         )
-    ],
-    swiftLanguageModes: [.v6]
+    ]
 )

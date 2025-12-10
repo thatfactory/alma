@@ -22,7 +22,7 @@ internal extension ALMA {
         guard isLoggingEnabled else {
             return
         }
-        let subsystem = "com.backslash-f.ALMA"
+        let subsystem = "com.thatfactory.ALMA"
         let logger = AppLogger(subsystem: subsystem, category: category.rawValue)
         logger.log(information)
     }
