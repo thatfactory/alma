@@ -6,19 +6,222 @@
 [![release](https://github.com/thatfactory/alma/actions/workflows/release.yml/badge.svg)](https://github.com/thatfactory/alma/actions/workflows/release.yml)
 
 # ALMA 👾
-## Purpose
-Helps developers to make games for the Apple ecosystem without recoding core elements.
+## Goal
+To help developers in creating games for the Apple ecosystem without having to rewrite the core elements.
 
-### High-level overview
-The image below represents the project's high-level vision.  
-Details will change over time, but the main idea will be preserved:
+### Vision
+The image below illustrates the project's high-level vision.  
+While specific details may evolve over time, the core concept will remain.
 
-![High-level overview](./Images/ALMA_Vision.png)
+```mermaid
+---
+config:
+  class:
+    hideEmptyMembersBox: true
+  look: classic
+  theme: base
+---
+classDiagram
+direction TB
+	namespace CoreSystems {
+        class World {
+	        Day/Night
+	        Snow/Rain
+	        Biomes/Vegetation
+	        Physics
+        }
 
-### Current implementation
-A snapshot of the current implementation:
+        class Input {
+	        Controllers
+	        Touch
+	        Voice
+        }
 
-![Current implementation](./Images/ALMA_Current.png)
+        class Behavior {
+	        Characters
+	        NPCs
+	        Bosses
+	        AI
+        }
+
+        class Progress {
+	        Save management
+	        Achievements
+	        Leaderboards
+	        XP
+        }
+
+        class Sound {
+        }
+
+        class Utilities {
+        }
+
+        class StateMachine {
+        }
+
+	}
+	namespace SupportingSystems {
+        class GCOverseer {
+	        GameControllerObserver
+        }
+
+        class VirtualPad {
+	        VirtualGameController
+        }
+
+        class SpeechRecognizer {
+	        ProvidesSpeechRecognition
+        }
+
+        class GKProxy {
+	        AppleGameKitWrapper
+        }
+
+        class AppLogger {
+	        AppleLoggerWrapper
+        }
+
+        class CSKScene {
+	        AppleSKSceneWrapper
+        }
+
+        class Device {
+	        ProvidesDeviceInfo
+        }
+
+        class PermissionChecker {
+	        ManagesPermissions
+        }
+
+        class CGKStateMachine {
+	        AppleGKStateWrapper
+        }
+
+	}
+    class `Game 🎮` {
+    }
+
+    class ALMA {
+    }
+
+    `Game 🎮` --> ALMA
+    ALMA --> World
+    ALMA --> Input
+    ALMA --> Behavior
+    ALMA --> Progress
+    ALMA --> Sound
+    ALMA --> Utilities
+    ALMA --> StateMachine
+    Input --> GCOverseer
+    Input --> VirtualPad
+    Input --> SpeechRecognizer
+    Progress --> GKProxy
+    Utilities --> AppLogger
+    Utilities --> CSKScene
+    Utilities --> Device
+    Utilities --> PermissionChecker
+    StateMachine --> CGKStateMachine
+
+    class `Game 🎮`:::White
+	class ALMA:::Yellow
+	class World:::Rose
+	class Input:::Sky
+	class Behavior:::Peach
+	class Progress:::Ash
+	class Sound:::Laranja
+	class Utilities:::Green
+	class StateMachine:::Blue
+	class GCOverseer:::Sky
+	class VirtualPad:::Sky
+	class SpeechRecognizer:::Sky
+	class GKProxy:::Ash
+	class AppLogger:::Green
+	class CSKScene:::Green
+	class Device:::Green
+	class PermissionChecker:::Green
+	class CGKStateMachine:::Blue
+	
+
+	classDef White :,stroke:#000000,fill:#FFF9C4,color:#000000,stroke:#000000,fill:#FFF9C4,color:#000000,stroke:#000000,fill:#FFF9C4,color:#000000,stroke:#000000,fill:#FFF9C4,color:#000000,stroke:#000000,fill:#FFF9C4,color:#000000,stroke:#000000,fill:#FFF9C4,color:#000000,stroke:#000000,fill:#FFF9C4,color:#000000,stroke:#000000,fill:#FFF9C4,color:#000000,fill:#FFFFFF,color:#000000,fill:#FFFFFF,color:#000000,stroke:#000000,fill:#FFFFFF,color:#000000
+	classDef Yellow :,fill:#FFF9C4,color:#000000,fill:#FFF9C4,color:#000000,fill:#FFF9C4,color:#000000,fill:#FFF9C4,color:#000000,fill:#FFF9C4,color:#000000
+	classDef Rose :,stroke-width:1px,stroke-dasharray:none,stroke:#FF5978,fill:#FFDFE5,color:#8E2236
+	classDef Sky :,stroke-width:1px,stroke-dasharray:none,stroke:#374D7C,fill:#E2EBFF,color:#374D7C,stroke-width:1px,stroke-dasharray:none,stroke:#374D7C,fill:#E2EBFF,color:#374D7C,stroke-width:1px,stroke-dasharray:none,stroke:#374D7C,fill:#E2EBFF,color:#374D7C,stroke-width:1px,stroke-dasharray:none,stroke:#374D7C,fill:#E2EBFF,color:#374D7C
+	classDef Peach :,stroke-width:1px,stroke-dasharray:none,stroke:#FBB35A,fill:#FFEFDB,color:#8F632D
+	classDef Ash :,stroke-width:1px,stroke-dasharray:none,stroke:#999999,fill:#EEEEEE,color:#000000,stroke-width:1px,stroke-dasharray:none,stroke:#999999,fill:#EEEEEE,color:#000000
+	classDef Laranja :,fill:#FFE0B2,stroke:transparent,color:#000000,fill:#FFE0B2,stroke:transparent,color:#000000
+	classDef Pine :,stroke-width:1px,stroke-dasharray:none,stroke:#254336,fill:#27654A,color:#FFFFFF,stroke-width:1px,stroke-dasharray:none,stroke:#254336,fill:#27654A,color:#FFFFFF,stroke-width:1px,stroke-dasharray:none,stroke:#254336,fill:#27654A,color:#FFFFFF,stroke-width:1px,stroke-dasharray:none,stroke:#254336,fill:#27654A,color:#FFFFFF,stroke-width:1px,stroke-dasharray:none,stroke:#254336,fill:#27654A,color:#FFFFFF
+	classDef Blue :,fill:#BBDEFB,color:#000000,stroke:#2962FF,fill:#BBDEFB,color:#000000,stroke:#2962FF,fill:#BBDEFB,color:#000000,stroke:#2962FF,fill:#BBDEFB,color:#000000,stroke:#2962FF,fill:#BBDEFB,color:#000000,stroke:#2962FF,fill:#BBDEFB,color:#000000,stroke:#2962FF,fill:#BBDEFB,color:#000000,stroke:#2962FF,fill:#BBDEFB,color:#000000,stroke:#2962FF
+	classDef Green :,stroke:#000000,fill:#C8E6C9,color:#000000,stroke:#000000,fill:#C8E6C9,color:#000000
+```
+
+### Current Relationships
+Here's a snapshot of the current implementation, which lacks any interfaces for interaction (at the time being):
+
+```mermaid
+---
+config:
+  class:
+    hideEmptyMembersBox: true
+  look: classic
+  theme: base
+---
+classDiagram
+direction TB
+	namespace CoreSystems {
+        class Input {
+        } 
+        class Utilities {
+        }
+        class StateMachine {
+        }
+	}
+	namespace SupportingSystems {
+        class GCOverseer {
+        }
+        class AppLogger {
+        }
+        class CSKScene {
+        }
+        class Device { 
+        }
+        class CGKStateMachine {
+        }
+	}
+
+    class ALMA {
+    }
+
+    ALMA --> Input
+    ALMA --> Utilities
+    ALMA --> StateMachine
+    Input --> GCOverseer
+    Utilities --> AppLogger
+    Utilities --> CSKScene
+    Utilities --> Device
+    StateMachine --> CGKStateMachine
+
+	class ALMA:::Yellow
+	class Input:::Sky
+	class Utilities:::Green
+	class StateMachine:::Blue
+	class GCOverseer:::Sky
+	class AppLogger:::Green
+	class CSKScene:::Green
+	class Device:::Green
+	class CGKStateMachine:::Blue
+
+	classDef White :,stroke:#000000,fill:#FFF9C4,color:#000000,stroke:#000000,fill:#FFF9C4,color:#000000,stroke:#000000,fill:#FFF9C4,color:#000000,stroke:#000000,fill:#FFF9C4,color:#000000,stroke:#000000,fill:#FFF9C4,color:#000000,stroke:#000000,fill:#FFF9C4,color:#000000,stroke:#000000,fill:#FFF9C4,color:#000000,stroke:#000000,fill:#FFF9C4,color:#000000,fill:#FFFFFF,color:#000000,fill:#FFFFFF,color:#000000,stroke:#000000,fill:#FFFFFF,color:#000000
+	classDef Yellow :,fill:#FFF9C4,color:#000000,fill:#FFF9C4,color:#000000,fill:#FFF9C4,color:#000000,fill:#FFF9C4,color:#000000,fill:#FFF9C4,color:#000000
+	classDef Rose :,stroke-width:1px,stroke-dasharray:none,stroke:#FF5978,fill:#FFDFE5,color:#8E2236
+	classDef Sky :,stroke-width:1px,stroke-dasharray:none,stroke:#374D7C,fill:#E2EBFF,color:#374D7C,stroke-width:1px,stroke-dasharray:none,stroke:#374D7C,fill:#E2EBFF,color:#374D7C,stroke-width:1px,stroke-dasharray:none,stroke:#374D7C,fill:#E2EBFF,color:#374D7C,stroke-width:1px,stroke-dasharray:none,stroke:#374D7C,fill:#E2EBFF,color:#374D7C
+	classDef Peach :,stroke-width:1px,stroke-dasharray:none,stroke:#FBB35A,fill:#FFEFDB,color:#8F632D
+	classDef Ash :,stroke-width:1px,stroke-dasharray:none,stroke:#999999,fill:#EEEEEE,color:#000000,stroke-width:1px,stroke-dasharray:none,stroke:#999999,fill:#EEEEEE,color:#000000
+	classDef Laranja :,fill:#FFE0B2,stroke:transparent,color:#000000,fill:#FFE0B2,stroke:transparent,color:#000000
+	classDef Pine :,stroke-width:1px,stroke-dasharray:none,stroke:#254336,fill:#27654A,color:#FFFFFF,stroke-width:1px,stroke-dasharray:none,stroke:#254336,fill:#27654A,color:#FFFFFF,stroke-width:1px,stroke-dasharray:none,stroke:#254336,fill:#27654A,color:#FFFFFF,stroke-width:1px,stroke-dasharray:none,stroke:#254336,fill:#27654A,color:#FFFFFF,stroke-width:1px,stroke-dasharray:none,stroke:#254336,fill:#27654A,color:#FFFFFF
+	classDef Blue :,fill:#BBDEFB,color:#000000,stroke:#2962FF,fill:#BBDEFB,color:#000000,stroke:#2962FF,fill:#BBDEFB,color:#000000,stroke:#2962FF,fill:#BBDEFB,color:#000000,stroke:#2962FF,fill:#BBDEFB,color:#000000,stroke:#2962FF,fill:#BBDEFB,color:#000000,stroke:#2962FF,fill:#BBDEFB,color:#000000,stroke:#2962FF,fill:#BBDEFB,color:#000000,stroke:#2962FF
+	classDef Green :,stroke:#000000,fill:#C8E6C9,color:#000000,stroke:#000000,fill:#C8E6C9,color:#000000
+```
 
 ## Integration
 ### Xcode
