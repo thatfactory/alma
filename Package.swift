@@ -31,7 +31,7 @@ let package = Package(
         ),
         .package(
             url: "https://github.com/thatfactory/device",
-            exact: "0.2.0"
+            exact: "0.2.2"
         ),
         .package(
             url: "https://github.com/thatfactory/gcoverseer",

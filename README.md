@@ -227,16 +227,6 @@ direction TB
 ```
 
 ## Integration
-### Umbrella Dependency Update Flow
-When a package provided through `ALMA` (for example `Device`) needs an update, use this sequence:
-
-1. Update and release the leaf package first.
-2. Bump the exact package dependency in `ALMA/Package.swift`.
-3. Release a new `ALMA` version.
-4. Bump `ALMA` in the consumer app/project.
-
-This keeps the umbrella dependency graph explicit and reproducible.
-
 ### Xcode
 Use Xcode's [built-in support for SPM](https://developer.apple.com/documentation/xcode/adding_package_dependencies_to_your_app).
 
@@ -248,7 +238,7 @@ In your `Package.swift`, add `ALMA` as a dependency:
 dependencies: [
     .package(
         url: "https://github.com/thatfactory/alma",
-        from: "0.1.0"
+        from: "0.1.2"
     )
 ]
 ```
