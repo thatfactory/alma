@@ -19,23 +19,23 @@ let package = Package(
     dependencies: [
         .package(
             url: "https://github.com/thatfactory/applogger",
-            from: "0.1.0"
+            exact: "0.1.0"
         ),
         .package(
             url: "https://github.com/thatfactory/cgkstatemachine",
-            from: "0.1.0"
+            exact: "0.1.0"
         ),
         .package(
             url: "https://github.com/thatfactory/cskscene",
-            from: "0.1.0"
+            exact: "0.1.1"
         ),
         .package(
             url: "https://github.com/thatfactory/device",
-            from: "0.1.0"
+            exact: "0.2.0"
         ),
         .package(
             url: "https://github.com/thatfactory/gcoverseer",
-            from: "0.1.0"
+            exact: "0.1.0"
         )
     ],
     targets: [
